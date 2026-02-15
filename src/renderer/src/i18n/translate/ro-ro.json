@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "URL de bază server la distanță",
       "builtinServers": "Servere integrate",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "O implementare de server MCP care integrează API-ul Brave Search, oferind funcționalități de căutare web și locală. Necesită configurarea variabilei de mediu BRAVE_API_KEY",
         "browser": "Controlează o fereastră Electron headless prin Protocolul Chrome DevTools. Instrumente: deschide URL, execută JS pe o singură linie, resetează sesiunea.",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "Server DiDi MCP care oferă servicii de ride-hailing, inclusiv căutare pe hartă, estimare preț, gestionare comenzi și urmărire șofer. Disponibil doar în China continentală. Necesită configurarea variabilei de mediu DIDI_API_KEY",
         "dify_knowledge": "Implementarea serverului MCP Dify oferă un API simplu pentru a interacționa cu Dify. Necesită configurarea cheii Dify",
         "fetch": "Server MCP pentru preluarea conținutului web de la URL",
@@ -4357,8 +4359,13 @@
         "memory": "Implementare de memorie persistentă bazată pe un graf de cunoștințe local. Aceasta permite modelului să rețină informații legate de utilizator între conversații diferite. Necesită configurarea variabilei de mediu MEMORY_FILE_PATH.",
         "no": "Fără descriere",
         "nowledge_mem": "Necesită aplicația Nowledge Mem rulând local. Păstrează chat-urile AI, instrumentele, notițele, agenții și fișierele în memoria privată de pe computerul tău. Descarcă de la https://mem.nowledge.co/",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "Execută cod Python într-un mediu sandbox securizat. Rulează Python cu Pyodide, suportând majoritatea bibliotecilor standard și pachetelor de calcul științific",
-        "sequentialthinking": "O implementare de server MCP care oferă instrumente pentru rezolvarea dinamică și reflexivă a problemelor prin procese de gândire structurată"
+        "sequentialthinking": "O implementare de server MCP care oferă instrumente pentru rezolvarea dinamică și reflexivă a problemelor prin procese de gândire structurată",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "Comandă",
       "config_description": "Configurează serverele Protocolului de Context Model",

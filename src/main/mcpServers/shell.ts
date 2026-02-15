@@ -93,7 +93,8 @@ class ShellServer {
               variables: {
                 type: 'array',
                 items: { type: 'string' },
-                description: 'List of environment variable names to retrieve. If empty, returns all environment variables.'
+                description:
+                  'List of environment variable names to retrieve. If empty, returns all environment variables.'
               }
             },
             required: []
@@ -107,12 +108,14 @@ class ShellServer {
 
       switch (name) {
         case 'execute_command':
-          return await this.executeCommand(args as {
-            command: string
-            cwd?: string
-            timeout?: number
-            shell?: string
-          })
+          return await this.executeCommand(
+            args as {
+              command: string
+              cwd?: string
+              timeout?: number
+              shell?: string
+            }
+          )
 
         case 'get_environment':
           return this.getEnvironment(args as { variables?: string[] })
@@ -123,12 +126,7 @@ class ShellServer {
     })
   }
 
-  private async executeCommand(args: {
-    command: string
-    cwd?: string
-    timeout?: number
-    shell?: string
-  }) {
+  private async executeCommand(args: { command: string; cwd?: string; timeout?: number; shell?: string }) {
     const { command, cwd, timeout = 30000, shell } = args
 
     if (!command || typeof command !== 'string') {
@@ -193,9 +191,7 @@ class ShellServer {
       }
     }
 
-    const results = variables
-      .map((v) => `${v}=${process.env[v] ?? '(not set)'}`)
-      .join('\n')
+    const results = variables.map((v) => `${v}=${process.env[v] ?? '(not set)'}`).join('\n')
 
     return {
       content: [{ type: 'text', text: results }],

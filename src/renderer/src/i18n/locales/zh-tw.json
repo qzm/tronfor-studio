@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "遠端 URL 位址",
       "builtinServers": "內建伺服器",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "一個整合了 Brave 搜尋 API 的 MCP 伺服器實做，提供網頁與本機搜尋雙重功能。需要設定 BRAVE_API_KEY 環境變數",
         "browser": "透過 Chrome DevTools Protocol 控制 headless Electron 視窗。工具：開啟 URL、執行單行 JS、重設工作階段。",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "一個整合了滴滴 MCP 伺服器實做，提供網約車服務包括地圖搜尋、價格預估、訂單管理和司機追蹤。僅支援中國大陸地區。需要設定 DIDI_API_KEY 環境變數",
         "dify_knowledge": "Dify 的 MCP 伺服器實做，提供了一個簡單的 API 來與 Dify 進行互動。需要設定 Dify Key",
         "fetch": "用於取得 URL 網頁內容的 MCP 伺服器",
@@ -4357,8 +4359,13 @@
         "memory": "基於本機知識圖譜的持久性記憶基礎實做。這使得模型能夠在不同對話間記住使用者的相關資訊。需要設定 MEMORY_FILE_PATH 環境變數。",
         "no": "無描述",
         "nowledge_mem": "需要本機執行 Nowledge Mem 應用程式。將 AI 對話、工具、筆記、代理和檔案保存在電腦上的私人記憶體中。請從 https://mem.nowledge.co/ 下載",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "在安全的沙盒環境中執行 Python 程式碼。使用 Pyodide 執行 Python，支援大多數標準函式庫和科學計算套件",
-        "sequentialthinking": "一個 MCP 伺服器實做，提供了透過結構化思維過程進行動態和反思性問題解決的工具"
+        "sequentialthinking": "一個 MCP 伺服器實做，提供了透過結構化思維過程進行動態和反思性問題解決的工具",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "指令",
       "config_description": "設定模型上下文協議伺服器",

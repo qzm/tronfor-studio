@@ -31,8 +31,7 @@ const GEO_SEARCH_TOOL: Tool = {
 const REVERSE_GEO_TOOL: Tool = {
   name: 'amap_reverse_geo',
   description:
-    '逆地理编码：将经纬度坐标转换为地址描述。' +
-    'Reverse geocoding: Convert coordinates to address descriptions.',
+    '逆地理编码：将经纬度坐标转换为地址描述。' + 'Reverse geocoding: Convert coordinates to address descriptions.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -223,7 +222,8 @@ function formatPOIResult(data: any): string {
   const pois = data.pois || []
   if (pois.length === 0) return 'No POIs found'
 
-  return `Found ${data.count || pois.length} results:\n\n` +
+  return (
+    `Found ${data.count || pois.length} results:\n\n` +
     pois
       .map((poi: any) => {
         return [
@@ -237,6 +237,7 @@ function formatPOIResult(data: any): string {
         ].join('\n')
       })
       .join('\n---\n')
+  )
 }
 
 function formatDirectionResult(data: any, mode: string): string {
@@ -247,11 +248,13 @@ function formatDirectionResult(data: any, mode: string): string {
       `Duration: ${(parseInt(transit.duration) / 60).toFixed(0)} minutes`,
       `Walking Distance: ${transit.walking_distance || 'N/A'}m`,
       `Cost: ${transit.cost || 'N/A'} CNY`,
-      `Segments: ${(transit.segments || []).map((s: any) => {
-        const bus = s.bus?.buslines?.[0]
-        if (bus) return `${bus.name} (${bus.departure_stop?.name} → ${bus.arrival_stop?.name})`
-        return 'Walk'
-      }).join(' → ')}`
+      `Segments: ${(transit.segments || [])
+        .map((s: any) => {
+          const bus = s.bus?.buslines?.[0]
+          if (bus) return `${bus.name} (${bus.departure_stop?.name} → ${bus.arrival_stop?.name})`
+          return 'Walk'
+        })
+        .join(' → ')}`
     ].join('\n')
   }
 
@@ -359,7 +362,14 @@ class AmapServer {
           }
 
           case 'amap_poi_search': {
-            const { keywords, city, types, location, radius = 3000, page_size = 10 } = args as {
+            const {
+              keywords,
+              city,
+              types,
+              location,
+              radius = 3000,
+              page_size = 10
+            } = args as {
               keywords: string
               city?: string
               types?: string
@@ -380,7 +390,12 @@ class AmapServer {
           }
 
           case 'amap_direction': {
-            const { origin, destination, mode = 'driving', city } = args as {
+            const {
+              origin,
+              destination,
+              mode = 'driving',
+              city
+            } = args as {
               origin: string
               destination: string
               mode?: string

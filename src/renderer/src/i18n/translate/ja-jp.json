@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "リモートURLアドレス",
       "builtinServers": "組み込みサーバー",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "Brave検索APIを統合したMCPサーバーの実装で、ウェブ検索とローカル検索の両機能を提供します。BRAVE_API_KEY環境変数の設定が必要です",
         "browser": "Chrome DevTools Protocolを介してheadless Electronウィンドウを制御します。ツール：URLを開く、単一行JSを実行、セッションをリセット。",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "DiDi MCPサーバーは、地図検索、料金見積もり、注文管理、ドライバー追跡を含むライドシェアサービスを提供します。中国本土でのみ利用可能です。DIDI_API_KEY環境変数の設定が必要です",
         "dify_knowledge": "DifyのMCPサーバー実装は、Difyと対話するためのシンプルなAPIを提供します。Dify Keyの設定が必要です。",
         "fetch": "URLのウェブページコンテンツを取得するためのMCPサーバー",
@@ -4357,8 +4359,13 @@
         "memory": "ローカルのナレッジグラフに基づく永続的なメモリの基本的な実装です。これにより、モデルは異なる会話間でユーザーの関連情報を記憶できるようになります。MEMORY_FILE_PATH 環境変数の設定が必要です。",
         "no": "説明なし",
         "nowledge_mem": "Nowledge Mem アプリをローカルで実行する必要があります。AI チャット、ツール、ノート、エージェント、ファイルをコンピューター上のプライベートメモリに保存します。https://mem.nowledge.co/ からダウンロードしてください",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "安全なサンドボックス環境でPythonコードを実行します。Pyodideを使用してPythonを実行し、ほとんどの標準ライブラリと科学計算パッケージをサポートしています。",
-        "sequentialthinking": "構造化された思考プロセスを通じて動的かつ反省的な問題解決を行うためのツールを提供するMCPサーバーの実装"
+        "sequentialthinking": "構造化された思考プロセスを通じて動的かつ反省的な問題解決を行うためのツールを提供するMCPサーバーの実装",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "コマンド",
       "config_description": "モデルコンテキストプロトコルサーバーの設定",

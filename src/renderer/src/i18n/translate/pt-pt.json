@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "Endereço de URL remoto",
       "builtinServers": "Servidores integrados",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "uma implementação de servidor MCP integrada com a API de pesquisa Brave, fornecendo funcionalidades de pesquisa web e local. Requer a configuração da variável de ambiente BRAVE_API_KEY",
         "browser": "Controla uma janela Electron headless via Chrome DevTools Protocol. Ferramentas: abrir URL, executar JS de linha única, reiniciar sessão.",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "Servidor DiDi MCP que fornece serviços de transporte incluindo pesquisa de mapas, estimativa de preços, gestão de pedidos e rastreamento de motoristas. Disponível apenas na China Continental. Requer configuração da variável de ambiente DIDI_API_KEY",
         "dify_knowledge": "Implementação do servidor MCP do Dify, que fornece uma API simples para interagir com o Dify. Requer a configuração da chave Dify",
         "fetch": "servidor MCP para obter o conteúdo da página web do URL",
@@ -4357,8 +4359,13 @@
         "memory": "Implementação base de memória persistente baseada em grafos de conhecimento locais. Isso permite que o modelo lembre informações relevantes do utilizador entre diferentes conversas. É necessário configurar a variável de ambiente MEMORY_FILE_PATH.",
         "no": "sem descrição",
         "nowledge_mem": "Requer a aplicação Nowledge Mem em execução localmente. Mantém conversas de IA, ferramentas, notas, agentes e ficheiros numa memória privada no seu computador. Transfira de https://mem.nowledge.co/",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "Executar código Python num ambiente sandbox seguro. Utilizar Pyodide para executar Python, suportando a maioria das bibliotecas padrão e pacotes de computação científica",
-        "sequentialthinking": "Uma implementação de servidor MCP que fornece ferramentas para resolução dinâmica e reflexiva de problemas através de um processo de pensamento estruturado"
+        "sequentialthinking": "Uma implementação de servidor MCP que fornece ferramentas para resolução dinâmica e reflexiva de problemas através de um processo de pensamento estruturado",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "Comando",
       "config_description": "Configurar modelo de protocolo de contexto do servidor",

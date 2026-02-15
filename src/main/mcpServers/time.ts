@@ -21,7 +21,8 @@ const GET_CURRENT_TIME_TOOL: Tool = {
       format: {
         type: 'string',
         enum: ['iso', 'unix', 'human', 'all'],
-        description: 'Output format: "iso" for ISO 8601, "unix" for timestamp, "human" for readable, "all" for everything. Default: "all"',
+        description:
+          'Output format: "iso" for ISO 8601, "unix" for timestamp, "human" for readable, "all" for everything. Default: "all"',
         default: 'all'
       }
     },
@@ -32,8 +33,7 @@ const GET_CURRENT_TIME_TOOL: Tool = {
 const CONVERT_TIMEZONE_TOOL: Tool = {
   name: 'convert_timezone',
   description:
-    'Convert a date/time from one timezone to another. ' +
-    'Accepts ISO 8601 format or common date string formats.',
+    'Convert a date/time from one timezone to another. ' + 'Accepts ISO 8601 format or common date string formats.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -211,7 +211,11 @@ class TimeServer {
           }
 
           case 'convert_timezone': {
-            const { datetime, from_timezone = 'UTC', to_timezone } = args as {
+            const {
+              datetime,
+              from_timezone = 'UTC',
+              to_timezone
+            } = args as {
               datetime: string
               from_timezone?: string
               to_timezone: string
@@ -228,7 +232,13 @@ class TimeServer {
           }
 
           case 'date_calculate': {
-            const { operation, date1, date2, amount, unit = 'days' } = args as {
+            const {
+              operation,
+              date1,
+              date2,
+              amount,
+              unit = 'days'
+            } = args as {
               operation: string
               date1: string
               date2?: string

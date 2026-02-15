@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "Адрес удаленного URL",
       "builtinServers": "Встроенные серверы",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "реализация сервера MCP с интеграцией API поиска Brave, обеспечивающая функции веб-поиска и локального поиска. Требуется настройка переменной среды BRAVE_API_KEY",
         "browser": "Управление headless-окном Electron через Chrome DevTools Protocol. Инструменты: открытие URL, выполнение однострочного JS, сброс сессии.",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "Сервер DiDi MCP, предоставляющий услуги такси, включая поиск на карте, оценку стоимости, управление заказами и отслеживание водителей. Доступен только в материковом Китае. Требует настройки переменной окружения DIDI_API_KEY",
         "dify_knowledge": "Реализация сервера MCP Dify, предоставляющая простой API для взаимодействия с Dify. Требуется настройка ключа Dify",
         "fetch": "MCP-сервер для получения содержимого веб-страниц по URL",
@@ -4357,8 +4359,13 @@
         "memory": "реализация постоянной памяти на основе локального графа знаний. Это позволяет модели запоминать информацию о пользователе между различными диалогами. Требуется настроить переменную среды MEMORY_FILE_PATH.",
         "no": "без описания",
         "nowledge_mem": "Требуется запущенное локально приложение Nowledge Mem. Хранит чаты ИИ, инструменты, заметки, агентов и файлы в приватной памяти на вашем компьютере. Скачать можно на https://mem.nowledge.co/",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "Выполняйте код Python в безопасной песочнице. Запускайте Python с помощью Pyodide, поддерживается большинство стандартных библиотек и пакетов для научных вычислений",
-        "sequentialthinking": "MCP серверная реализация, предоставляющая инструменты для динамического и рефлексивного решения проблем посредством структурированного мыслительного процесса"
+        "sequentialthinking": "MCP серверная реализация, предоставляющая инструменты для динамического и рефлексивного решения проблем посредством структурированного мыслительного процесса",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "Команда",
       "config_description": "Настройка серверов протокола контекста модели",

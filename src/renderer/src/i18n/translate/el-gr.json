@@ -4347,8 +4347,10 @@
       "baseUrlTooltip": "Σύνδεσμος Απομακρυσμένης διεύθυνσης URL",
       "builtinServers": "Ενσωματωμένοι Διακομιστές",
       "builtinServersDescriptions": {
+        "amap": "[to be translated]:Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
         "brave_search": "μια εφαρμογή διακομιστή MCP που ενσωματώνει το Brave Search API, παρέχοντας δυνατότητες αναζήτησης στον ιστό και τοπικής αναζήτησης. Απαιτείται η ρύθμιση της μεταβλητής περιβάλλοντος BRAVE_API_KEY",
         "browser": "Ελέγχει ένα headless παράθυρο Electron μέσω του Chrome DevTools Protocol. Εργαλεία: άνοιγμα URL, εκτέλεση JS μίας γραμμής, επαναφορά συνεδρίας.",
+        "calculator": "[to be translated]:Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
         "didi_mcp": "Διακομιστής DiDi MCP που παρέχει υπηρεσίες μεταφοράς συμπεριλαμβανομένης της αναζήτησης χαρτών, εκτίμησης τιμών, διαχείρισης παραγγελιών και παρακολούθησης οδηγών. Διαθέσιμο μόνο στην ηπειρωτική Κίνα. Απαιτεί διαμόρφωση της μεταβλητής περιβάλλοντος DIDI_API_KEY",
         "dify_knowledge": "Η υλοποίηση του Dify για τον διακομιστή MCP, παρέχει μια απλή API για να αλληλεπιδρά με το Dify. Απαιτείται η ρύθμιση του κλειδιού Dify",
         "fetch": "Εξυπηρετητής MCP για λήψη περιεχομένου ιστοσελίδας URL",
@@ -4357,8 +4359,13 @@
         "memory": "Βασική υλοποίηση μόνιμης μνήμης με βάση τοπικό γράφημα γνώσης. Αυτό επιτρέπει στο μοντέλο να θυμάται πληροφορίες σχετικές με τον χρήστη ανάμεσα σε διαφορετικές συνομιλίες. Απαιτείται η ρύθμιση της μεταβλητής περιβάλλοντος MEMORY_FILE_PATH.",
         "no": "Χωρίς περιγραφή",
         "nowledge_mem": "Απαιτεί την εφαρμογή Nowledge Mem να εκτελείται τοπικά. Διατηρεί συνομιλίες με AI, εργαλεία, σημειώσεις, πράκτορες και αρχεία σε ιδιωτική μνήμη στον υπολογιστή σας. Κάντε λήψη από https://mem.nowledge.co/",
+        "office": "[to be translated]:Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format",
+        "pdf": "[to be translated]:Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
         "python": "Εκτελέστε κώδικα Python σε ένα ασφαλές περιβάλλον sandbox. Χρησιμοποιήστε το Pyodide για να εκτελέσετε Python, υποστηρίζοντας την πλειονότητα των βιβλιοθηκών της τυπικής βιβλιοθήκης και των πακέτων επιστημονικού υπολογισμού",
-        "sequentialthinking": "ένας εξυπηρετητής MCP που υλοποιείται, παρέχοντας εργαλεία για δυναμική και αναστοχαστική επίλυση προβλημάτων μέσω δομημένων διαδικασιών σκέψης"
+        "sequentialthinking": "ένας εξυπηρετητής MCP που υλοποιείται, παρέχοντας εργαλεία για δυναμική και αναστοχαστική επίλυση προβλημάτων μέσω δομημένων διαδικασιών σκέψης",
+        "shell": "[to be translated]:Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "[to be translated]:Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "time": "[to be translated]:Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness"
       },
       "command": "Εντολή",
       "config_description": "Ρυθμίζει το πλαίσιο συντονισμού πρωτοκόλλων διακομιστή",

@@ -82,7 +82,23 @@ class CalculatorServer {
                 type: 'array',
                 items: {
                   type: 'string',
-                  enum: ['mean', 'median', 'mode', 'stddev', 'variance', 'min', 'max', 'range', 'sum', 'count', 'p25', 'p75', 'p90', 'p95', 'p99']
+                  enum: [
+                    'mean',
+                    'median',
+                    'mode',
+                    'stddev',
+                    'variance',
+                    'min',
+                    'max',
+                    'range',
+                    'sum',
+                    'count',
+                    'p25',
+                    'p75',
+                    'p90',
+                    'p95',
+                    'p99'
+                  ]
                 },
                 description: 'Which statistical measures to calculate. Defaults to all if not specified.'
               }
@@ -149,7 +165,12 @@ class CalculatorServer {
       }
     } catch (error) {
       return {
-        content: [{ type: 'text', text: `Error evaluating "${expression}": ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          {
+            type: 'text',
+            text: `Error evaluating "${expression}": ${error instanceof Error ? error.message : String(error)}`
+          }
+        ],
         isError: true
       }
     }
@@ -184,7 +205,18 @@ class CalculatorServer {
     const sum = data.reduce((a, b) => a + b, 0)
     const mean = sum / n
 
-    const allMeasures = measures || ['count', 'sum', 'mean', 'median', 'mode', 'min', 'max', 'range', 'stddev', 'variance']
+    const allMeasures = measures || [
+      'count',
+      'sum',
+      'mean',
+      'median',
+      'mode',
+      'min',
+      'max',
+      'range',
+      'stddev',
+      'variance'
+    ]
 
     const results: string[] = []
 
@@ -293,7 +325,7 @@ function percentile(sorted: number[], p: number): number {
 // Safe math expression evaluator - no eval(), only whitelisted operations
 function safeEval(expr: string): number {
   // Replace math constants and functions
-  let processed = expr
+  const processed = expr
     .replace(/\bPI\b/g, String(Math.PI))
     .replace(/\bE\b/g, String(Math.E))
     .replace(/\bsqrt\s*\(/g, 'Math.sqrt(')
@@ -316,9 +348,11 @@ function safeEval(expr: string): number {
     .replace(/\bmax\s*\(/g, 'Math.max(')
 
   // Validate: only allow numbers, operators, Math functions, parentheses, commas, dots, spaces
-  const safePattern = /^[\d\s+\-*/%().^,eE]+$|Math\.(sqrt|abs|ceil|floor|round|sin|cos|tan|asin|acos|atan|log|log2|log10|exp|pow|min|max)\(/
   // Remove all Math.xxx( calls for validation
-  const forValidation = processed.replace(/Math\.(sqrt|abs|ceil|floor|round|sin|cos|tan|asin|acos|atan|log|log2|log10|exp|pow|min|max)/g, '')
+  const forValidation = processed.replace(
+    /Math\.(sqrt|abs|ceil|floor|round|sin|cos|tan|asin|acos|atan|log|log2|log10|exp|pow|min|max)/g,
+    ''
+  )
   if (!/^[\d\s+\-*/%().^,eE]*$/.test(forValidation)) {
     throw new Error('Expression contains disallowed characters')
   }
@@ -337,45 +371,89 @@ function safeEval(expr: string): number {
 
 // Unit conversion tables
 const LENGTH_TO_METERS: Record<string, number> = {
-  mm: 0.001, cm: 0.01, m: 1, km: 1000,
-  in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344,
+  mm: 0.001,
+  cm: 0.01,
+  m: 1,
+  km: 1000,
+  in: 0.0254,
+  ft: 0.3048,
+  yd: 0.9144,
+  mi: 1609.344,
   nm: 1852, // nautical mile
   // Chinese units
-  li: 500, zhang: 3.3333, chi: 0.3333, cun: 0.0333
+  li: 500,
+  zhang: 3.3333,
+  chi: 0.3333,
+  cun: 0.0333
 }
 
 const WEIGHT_TO_KG: Record<string, number> = {
-  mg: 0.000001, g: 0.001, kg: 1, t: 1000, // metric ton
-  oz: 0.0283495, lb: 0.453592, st: 6.35029,
+  mg: 0.000001,
+  g: 0.001,
+  kg: 1,
+  t: 1000, // metric ton
+  oz: 0.0283495,
+  lb: 0.453592,
+  st: 6.35029,
   // Chinese units
-  jin: 0.5, liang: 0.05
+  jin: 0.5,
+  liang: 0.05
 }
 
 const AREA_TO_M2: Record<string, number> = {
-  mm2: 0.000001, cm2: 0.0001, m2: 1, km2: 1000000,
+  mm2: 0.000001,
+  cm2: 0.0001,
+  m2: 1,
+  km2: 1000000,
   ha: 10000, // hectare
-  in2: 0.00064516, ft2: 0.092903, yd2: 0.836127, acre: 4046.86, mi2: 2589988.11,
+  in2: 0.00064516,
+  ft2: 0.092903,
+  yd2: 0.836127,
+  acre: 4046.86,
+  mi2: 2589988.11,
   mu: 666.667 // 亩
 }
 
 const VOLUME_TO_L: Record<string, number> = {
-  ml: 0.001, l: 1, m3: 1000,
-  'fl oz': 0.0295735, cup: 0.236588, pt: 0.473176, qt: 0.946353, gal: 3.78541
+  ml: 0.001,
+  l: 1,
+  m3: 1000,
+  'fl oz': 0.0295735,
+  cup: 0.236588,
+  pt: 0.473176,
+  qt: 0.946353,
+  gal: 3.78541
 }
 
 const SPEED_TO_MS: Record<string, number> = {
-  'km/h': 0.277778, 'kmh': 0.277778,
-  'm/s': 1, 'ms': 1,
-  'mph': 0.44704, 'mi/h': 0.44704,
-  'knot': 0.514444, 'kn': 0.514444
+  'km/h': 0.277778,
+  kmh: 0.277778,
+  'm/s': 1,
+  ms: 1,
+  mph: 0.44704,
+  'mi/h': 0.44704,
+  knot: 0.514444,
+  kn: 0.514444
 }
 
 const DATA_TO_BYTES: Record<string, number> = {
-  b: 1, kb: 1024, mb: 1024 ** 2, gb: 1024 ** 3, tb: 1024 ** 4, pb: 1024 ** 5
+  b: 1,
+  kb: 1024,
+  mb: 1024 ** 2,
+  gb: 1024 ** 3,
+  tb: 1024 ** 4,
+  pb: 1024 ** 5
 }
 
 const TIME_TO_SECONDS: Record<string, number> = {
-  ms: 0.001, s: 1, min: 60, h: 3600, day: 86400, week: 604800, month: 2592000, year: 31536000
+  ms: 0.001,
+  s: 1,
+  min: 60,
+  h: 3600,
+  day: 86400,
+  week: 604800,
+  month: 2592000,
+  year: 31536000
 }
 
 function convertUnit(value: number, from: string, to: string): number {
@@ -412,17 +490,34 @@ function convertTemperature(value: number, from: string, to: string): number {
   // Normalize to celsius first
   let celsius: number
   switch (from) {
-    case 'celsius': case 'c': celsius = value; break
-    case 'fahrenheit': case 'f': celsius = (value - 32) * 5 / 9; break
-    case 'kelvin': case 'k': celsius = value - 273.15; break
-    default: throw new Error(`Unknown temperature unit: ${from}`)
+    case 'celsius':
+    case 'c':
+      celsius = value
+      break
+    case 'fahrenheit':
+    case 'f':
+      celsius = ((value - 32) * 5) / 9
+      break
+    case 'kelvin':
+    case 'k':
+      celsius = value - 273.15
+      break
+    default:
+      throw new Error(`Unknown temperature unit: ${from}`)
   }
 
   switch (to) {
-    case 'celsius': case 'c': return celsius
-    case 'fahrenheit': case 'f': return celsius * 9 / 5 + 32
-    case 'kelvin': case 'k': return celsius + 273.15
-    default: throw new Error(`Unknown temperature unit: ${to}`)
+    case 'celsius':
+    case 'c':
+      return celsius
+    case 'fahrenheit':
+    case 'f':
+      return (celsius * 9) / 5 + 32
+    case 'kelvin':
+    case 'k':
+      return celsius + 273.15
+    default:
+      throw new Error(`Unknown temperature unit: ${to}`)
   }
 }
 

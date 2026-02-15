@@ -72,8 +72,7 @@ class PDFServer {
         },
         {
           name: 'pdf_extract_pages',
-          description:
-            'Extract specific pages from a PDF and save them as a new PDF file.',
+          description: 'Extract specific pages from a PDF and save them as a new PDF file.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -95,8 +94,7 @@ class PDFServer {
         },
         {
           name: 'pdf_merge',
-          description:
-            'Merge multiple PDF files into a single PDF file.',
+          description: 'Merge multiple PDF files into a single PDF file.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -194,7 +192,9 @@ class PDFServer {
     } catch (error) {
       logger.error(`PDF read error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error reading PDF: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error reading PDF: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
@@ -210,7 +210,6 @@ class PDFServer {
       const data = await pdfParse(buffer)
 
       const info = data.info || {}
-      const metadata = data.metadata || {}
 
       const result = [
         `=== PDF Information ===`,
@@ -236,7 +235,9 @@ class PDFServer {
     } catch (error) {
       logger.error(`PDF info error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error reading PDF info: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error reading PDF info: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
@@ -257,23 +258,33 @@ class PDFServer {
       }
 
       const newDoc = await PDFDocument.create()
-      const copiedPages = await newDoc.copyPages(srcDoc, selectedPages.map((p) => p - 1))
+      const copiedPages = await newDoc.copyPages(
+        srcDoc,
+        selectedPages.map((p) => p - 1)
+      )
       copiedPages.forEach((page) => newDoc.addPage(page))
 
       const pdfBytes = await newDoc.save()
       await fs.writeFile(output_path, pdfBytes)
 
       return {
-        content: [{
-          type: 'text',
-          text: `Extracted ${selectedPages.length} pages (${selectedPages.join(', ')}) from ${path.basename(file_path)} to ${output_path}`
-        }],
+        content: [
+          {
+            type: 'text',
+            text: `Extracted ${selectedPages.length} pages (${selectedPages.join(', ')}) from ${path.basename(file_path)} to ${output_path}`
+          }
+        ],
         isError: false
       }
     } catch (error) {
       logger.error(`PDF extract error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error extracting PDF pages: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          {
+            type: 'text',
+            text: `Error extracting PDF pages: ${error instanceof Error ? error.message : String(error)}`
+          }
+        ],
         isError: true
       }
     }
@@ -297,16 +308,20 @@ class PDFServer {
       await fs.writeFile(output_path, pdfBytes)
 
       return {
-        content: [{
-          type: 'text',
-          text: `Merged ${file_paths.length} PDF files (${mergedDoc.getPageCount()} total pages) into ${output_path}`
-        }],
+        content: [
+          {
+            type: 'text',
+            text: `Merged ${file_paths.length} PDF files (${mergedDoc.getPageCount()} total pages) into ${output_path}`
+          }
+        ],
         isError: false
       }
     } catch (error) {
       logger.error(`PDF merge error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error merging PDFs: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error merging PDFs: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }

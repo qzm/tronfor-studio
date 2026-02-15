@@ -72,8 +72,7 @@ class SystemInfoServer {
               category: {
                 type: 'string',
                 enum: ['all', 'os', 'cpu', 'memory', 'network', 'runtime'],
-                description:
-                  'Information category to retrieve. "all" returns everything. Default: "all"',
+                description: 'Information category to retrieve. "all" returns everything. Default: "all"',
                 default: 'all'
               }
             },
@@ -82,8 +81,7 @@ class SystemInfoServer {
         },
         {
           name: 'get_disk_usage',
-          description:
-            'Get disk usage information for the system. Shows total, used, and free space.',
+          description: 'Get disk usage information for the system. Shows total, used, and free space.',
           inputSchema: {
             type: 'object',
             properties: {},
@@ -145,7 +143,10 @@ class SystemInfoServer {
         `=== CPU ===\n` +
           `Model: ${cpus[0]?.model || 'Unknown'}\n` +
           `Cores: ${cpus.length}\n` +
-          `Load Average (1m, 5m, 15m): ${os.loadavg().map((l) => l.toFixed(2)).join(', ')}\n` +
+          `Load Average (1m, 5m, 15m): ${os
+            .loadavg()
+            .map((l) => l.toFixed(2))
+            .join(', ')}\n` +
           `Per-core details:\n${getCpuUsage()}`
       )
     }
@@ -206,7 +207,9 @@ class SystemInfoServer {
       }
     } catch (error) {
       return {
-        content: [{ type: 'text', text: `Error getting disk usage: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error getting disk usage: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }

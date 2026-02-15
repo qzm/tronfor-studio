@@ -71,7 +71,8 @@ class OfficeServer {
               output_format: {
                 type: 'string',
                 enum: ['table', 'json', 'csv'],
-                description: 'Output format: "table" for markdown table, "json" for JSON array, "csv" for CSV text. Default: "table"',
+                description:
+                  'Output format: "table" for markdown table, "json" for JSON array, "csv" for CSV text. Default: "table"',
                 default: 'table'
               },
               header_row: {
@@ -123,8 +124,7 @@ class OfficeServer {
         },
         {
           name: 'read_csv',
-          description:
-            'Read a CSV file and return structured data. Supports custom delimiters and encoding.',
+          description: 'Read a CSV file and return structured data. Supports custom delimiters and encoding.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -235,7 +235,23 @@ class OfficeServer {
 
     try {
       // For plain text files, read directly
-      const textExtensions = ['.txt', '.md', '.json', '.xml', '.yaml', '.yml', '.html', '.htm', '.css', '.js', '.ts', '.log', '.ini', '.cfg', '.conf']
+      const textExtensions = [
+        '.txt',
+        '.md',
+        '.json',
+        '.xml',
+        '.yaml',
+        '.yml',
+        '.html',
+        '.htm',
+        '.css',
+        '.js',
+        '.ts',
+        '.log',
+        '.ini',
+        '.cfg',
+        '.conf'
+      ]
       if (textExtensions.includes(ext)) {
         let content = await fs.readFile(file_path, 'utf-8')
         if (content.length > max_chars) {
@@ -251,7 +267,7 @@ class OfficeServer {
 
       // For office documents, use officeparser
       const officeparser = await import('officeparser')
-      const text = await officeparser.parseOffice(file_path) as string
+      const text = await officeparser.parseOfficeAsync(file_path)
 
       let result = `File: ${path.basename(file_path)}\nType: ${ext}\n---\n${text}`
       if (result.length > max_chars) {
@@ -262,7 +278,9 @@ class OfficeServer {
     } catch (error) {
       logger.error(`Document read error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error reading document: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error reading document: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
@@ -320,12 +338,16 @@ class OfficeServer {
         case 'csv': {
           const csvLines = [headers.join(',')]
           dataRows.forEach((row) => {
-            csvLines.push(row.map((cell) => {
-              const str = String(cell ?? '')
-              return str.includes(',') || str.includes('"') || str.includes('\n')
-                ? `"${str.replace(/"/g, '""')}"`
-                : str
-            }).join(','))
+            csvLines.push(
+              row
+                .map((cell) => {
+                  const str = String(cell ?? '')
+                  return str.includes(',') || str.includes('"') || str.includes('\n')
+                    ? `"${str.replace(/"/g, '""')}"`
+                    : str
+                })
+                .join(',')
+            )
           })
           result = csvLines.join('\n')
           break
@@ -349,18 +371,15 @@ class OfficeServer {
     } catch (error) {
       logger.error(`Excel read error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error reading Excel: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error reading Excel: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
   }
 
-  private async createExcel(args: {
-    output_path: string
-    sheet_name?: string
-    headers: string[]
-    rows: any[][]
-  }) {
+  private async createExcel(args: { output_path: string; sheet_name?: string; headers: string[]; rows: any[][] }) {
     const { output_path, sheet_name = 'Sheet1', headers, rows } = args
 
     try {
@@ -373,16 +392,20 @@ class OfficeServer {
       await fs.writeFile(output_path, buffer)
 
       return {
-        content: [{
-          type: 'text',
-          text: `Created Excel file: ${output_path}\nSheet: ${sheet_name}\nHeaders: ${headers.length} columns\nData: ${rows.length} rows`
-        }],
+        content: [
+          {
+            type: 'text',
+            text: `Created Excel file: ${output_path}\nSheet: ${sheet_name}\nHeaders: ${headers.length} columns\nData: ${rows.length} rows`
+          }
+        ],
         isError: false
       }
     } catch (error) {
       logger.error(`Excel create error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error creating Excel: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error creating Excel: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
@@ -438,7 +461,9 @@ class OfficeServer {
       if (output_format === 'json') {
         const records = dataRows.map((row) => {
           const obj: Record<string, string> = {}
-          headers.forEach((h, i) => { obj[h] = row[i] ?? '' })
+          headers.forEach((h, i) => {
+            obj[h] = row[i] ?? ''
+          })
           return obj
         })
         result = JSON.stringify(records, null, 2)
@@ -457,18 +482,15 @@ class OfficeServer {
     } catch (error) {
       logger.error(`CSV read error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error reading CSV: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error reading CSV: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
   }
 
-  private async writeCsv(args: {
-    output_path: string
-    headers: string[]
-    rows: any[][]
-    delimiter?: string
-  }) {
+  private async writeCsv(args: { output_path: string; headers: string[]; rows: any[][]; delimiter?: string }) {
     const { output_path, headers, rows, delimiter = ',' } = args
 
     try {
@@ -488,16 +510,20 @@ class OfficeServer {
       await fs.writeFile(output_path, lines.join('\n'), 'utf-8')
 
       return {
-        content: [{
-          type: 'text',
-          text: `Created CSV file: ${output_path}\nColumns: ${headers.length}\nRows: ${rows.length}`
-        }],
+        content: [
+          {
+            type: 'text',
+            text: `Created CSV file: ${output_path}\nColumns: ${headers.length}\nRows: ${rows.length}`
+          }
+        ],
         isError: false
       }
     } catch (error) {
       logger.error(`CSV write error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error writing CSV: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error writing CSV: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
@@ -552,7 +578,9 @@ class OfficeServer {
     } catch (error) {
       logger.error(`File info error: ${error}`)
       return {
-        content: [{ type: 'text', text: `Error getting file info: ${error instanceof Error ? error.message : String(error)}` }],
+        content: [
+          { type: 'text', text: `Error getting file info: ${error instanceof Error ? error.message : String(error)}` }
+        ],
         isError: true
       }
     }
