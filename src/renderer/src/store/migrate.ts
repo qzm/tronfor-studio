@@ -3219,6 +3219,31 @@ const migrateConfig = {
       logger.error('migrate 196 error', error as Error)
       return state
     }
+  },
+  '197': (state: RootState) => {
+    try {
+      if (state.openclaw.gatewayPort === 18789) {
+        state.openclaw.gatewayPort = 18790
+      }
+      return state
+    } catch (error) {
+      logger.error('migrate 197 error', error as Error)
+      return state
+    }
+  },
+  '198': (state: RootState) => {
+    try {
+      state.llm.providers.forEach((provider) => {
+        if (provider.id === 'minimax') {
+          provider.models = SYSTEM_MODELS['minimax']
+          provider.apiHost = 'https://api.minimaxi.com/v1/'
+        }
+      })
+      return state
+    } catch (error) {
+      logger.error('migrate 198 error', error as Error)
+      return state
+    }
   }
 }
 

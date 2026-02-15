@@ -1,6 +1,6 @@
 {
   "name": "CherryStudio",
-  "version": "1.7.17",
+  "version": "1.7.19",
   "private": true,
   "description": "A powerful AI assistant for producer.",
   "desktopName": "CherryStudio.desktop",
@@ -51,6 +51,7 @@
     "test:main": "vitest run --project main",
     "test:renderer": "vitest run --project renderer",
     "test:aicore": "vitest run --project aiCore",
+    "test:shared": "vitest run --project shared",
     "test:update": "pnpm test:renderer --update",
     "test:coverage": "vitest run --coverage --silent",
     "test:ui": "vitest --ui",
@@ -230,6 +231,7 @@
     "@types/react-infinite-scroll-component": "^5.0.0",
     "@types/react-transition-group": "^4.4.12",
     "@types/react-window": "^1",
+    "@types/semver": "^7.7.1",
     "@types/swagger-jsdoc": "^6",
     "@types/swagger-ui-express": "^4.1.8",
     "@types/tinycolor2": "^1",
