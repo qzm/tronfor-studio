@@ -4312,7 +4312,14 @@
         "no": "No description",
         "nowledge_mem": "Requires Nowledge Mem app running locally. Keeps AI chats, tools, notes, agents, and files in private memory on your computer. Download from https://mem.nowledge.co/",
         "python": "Execute Python code in a secure sandbox environment. Run Python with Pyodide, supporting most standard libraries and scientific computing packages",
-        "sequentialthinking": "A MCP server implementation that provides tools for dynamic and reflective problem solving through structured thinking processes"
+        "sequentialthinking": "A MCP server implementation that provides tools for dynamic and reflective problem solving through structured thinking processes",
+        "time": "Get current time, convert timezones, and calculate date differences. LLMs cannot tell time on their own - this server provides accurate time awareness",
+        "shell": "Execute shell commands in the system environment. Supports running arbitrary commands with timeout and working directory control. Dangerous commands are blocked for safety",
+        "system_info": "Get comprehensive system information including OS, CPU, memory, network, disk usage, and runtime details. Helps AI understand the environment it's running on",
+        "amap": "Amap (Gaode Maps) integration providing geocoding, reverse geocoding, POI search, route planning, weather queries, and IP location. Requires configuring the AMAP_API_KEY environment variable",
+        "calculator": "Precise mathematical calculations, unit conversions, statistical analysis, and number base conversions. Use this instead of mental math for accurate results",
+        "pdf": "Read, extract, merge, and split PDF files. Extract text content and metadata from PDF documents. Supports page-level extraction and multi-file merging",
+        "office": "Read and create office documents: Word (.docx), Excel (.xlsx/.xls), PowerPoint (.pptx), CSV, and plain text files. Supports structured Excel/CSV output as markdown tables, JSON, or CSV format"
       },
       "command": "Command",
       "config_description": "Configure Model Context Protocol servers",

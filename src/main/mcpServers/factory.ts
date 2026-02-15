@@ -3,16 +3,23 @@ import type { Server } from '@modelcontextprotocol/sdk/server/index.js'
 import type { BuiltinMCPServerName } from '@types'
 import { BuiltinMCPServerNames } from '@types'
 
+import AmapServer from './amap'
 import BraveSearchServer from './brave-search'
 import BrowserServer from './browser'
+import CalculatorServer from './calculator'
 import DiDiMcpServer from './didi-mcp'
 import DifyKnowledgeServer from './dify-knowledge'
 import FetchServer from './fetch'
 import FileSystemServer from './filesystem'
 import HubServer from './hub'
 import MemoryServer from './memory'
+import OfficeServer from './office'
+import PDFServer from './pdf'
 import PythonServer from './python'
 import ThinkingServer from './sequentialthinking'
+import ShellServer from './shell'
+import SystemInfoServer from './system-info'
+import TimeServer from './time'
 
 const logger = loggerService.withContext('MCPFactory')
 
@@ -55,6 +62,28 @@ export function createInMemoryMCPServer(
     }
     case BuiltinMCPServerNames.hub: {
       return new HubServer().server
+    }
+    case BuiltinMCPServerNames.time: {
+      return new TimeServer().server
+    }
+    case BuiltinMCPServerNames.shell: {
+      return new ShellServer().server
+    }
+    case BuiltinMCPServerNames.systemInfo: {
+      return new SystemInfoServer().server
+    }
+    case BuiltinMCPServerNames.amap: {
+      const apiKey = envs.AMAP_API_KEY
+      return new AmapServer(apiKey).server
+    }
+    case BuiltinMCPServerNames.calculator: {
+      return new CalculatorServer().server
+    }
+    case BuiltinMCPServerNames.pdf: {
+      return new PDFServer().server
+    }
+    case BuiltinMCPServerNames.office: {
+      return new OfficeServer().server
     }
     default:
       throw new Error(`Unknown in-memory MCP server: ${name}`)
